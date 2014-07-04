@@ -56,11 +56,15 @@ robolectric {
 dependencies {
     repositories {
         mavenCentral()
+        // see https://code.google.com/p/android-test-kit/issues/detail?id=42 for espresso with dagger 1.2
+        maven { url 'https://raw.github.com/tommyd3mdi/mvn/master' }
     }
     // Espresso
-    androidTestCompile files('lib/espresso-1.1.jar', 'lib/testrunner-1.1.jar', 'lib/testrunner-runtime-1.1.jar')
+    androidTestCompile('com.google.android.apps.common.testing.ui.espresso:espresso:1.1') {
+        exclude group: 'com.squareup.dagger'
+    }
     androidTestCompile 'com.google.guava:guava:14.0.1'
-    androidTestCompile 'com.squareup.dagger:dagger:1.1.0'
+    androidTestCompile 'com.squareup.dagger:dagger:1.2.1'
     androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
     androidTestCompile 'org.hamcrest:hamcrest-core:1.1'
     androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
