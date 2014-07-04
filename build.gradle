@@ -40,6 +40,9 @@ android {
             runProguard false
         }
     }
+    dexOptions {
+        javaMaxHeapSize '2g'
+    }
 
     sourceSets {
         androidTest {
